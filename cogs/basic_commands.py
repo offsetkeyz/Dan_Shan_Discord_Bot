@@ -11,7 +11,7 @@ async def saymore(ctx, *, message=None):
         return
     await ctx.send(f'{message}')
 
-@commands.hybrid_command(
+@commands.command(
         name="help",
         description="List all commands the bot has loaded."
     )
