@@ -31,25 +31,6 @@ async def on_ready():
     print('Hello!')
     status_task.start()
 
-@bot.command()
-# '*' is to include everything after command
-# Consume all argument must be last in the function
-async def say(ctx, *, message=None):
-    if message is None:
-        await ctx.send('Please provide a message')
-        return
-    await ctx.send(f'{message}')
-
-@bot.command()
-async def userinfo(ctx, user: discord.User):
-    await ctx.send(user.display_name + " has earned their place in this clan. You know how...")
-
-# Multiple Arguments
-@bot.command()
-async def multi(ctx, role: discord.Role, user: discord.User):
-    await ctx.send(role.id)
-    await ctx.send(user.id)
-
 async def load_cogs() -> None:
     """
     The code in this function is executed whenever the bot will start.
