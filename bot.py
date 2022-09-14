@@ -47,7 +47,6 @@ async def on_message(message: discord.Message) -> None:
     :param message: The message that was sent.
     """
     try:
-        print(message)
         await bot.process_commands(message)
     except Exception as e:
         print('error test line 76 bot.py')
