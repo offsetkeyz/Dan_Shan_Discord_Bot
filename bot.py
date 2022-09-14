@@ -56,6 +56,7 @@ async def on_message(message: discord.Message) -> None:
 async def on_ready():
     print('Hello!')
     status_task.start()
+    cogs_reload.start()
 
 async def load_cogs() -> None:
     """
