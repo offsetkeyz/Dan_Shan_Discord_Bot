@@ -31,7 +31,8 @@ async def on_ready():
     print('Hello!')
     status_task.start()
 
-async def load_cogs() -> None:
+# async 
+def load_cogs() -> None:
     """
     The code in this function is executed whenever the bot will start.
     """
@@ -39,7 +40,8 @@ async def load_cogs() -> None:
         if file.endswith(".py"):
             extension = file[:-3]
             try:
-                await bot.load_extension(f'cogs.{extension}')
+                # await 
+                bot.load_extension(f'cogs.{extension}')
                 print(f"Loaded extension '{extension}'")
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
