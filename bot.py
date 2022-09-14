@@ -39,7 +39,8 @@ async def load_cogs() -> None:
         if file.endswith(".py"):
             extension = file[:-3]
             try:
-                await bot.load_extension(f'cogs.{extension}')
+                # await 
+                bot.load_extension(f'cogs.{extension}')
                 print(f"Loaded extension '{extension}'")
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
@@ -60,5 +61,6 @@ async def userinfo(ctx, user: discord.User):
     await ctx.send(user.display_name + " has earned their place in this clan. You know how...")
 
 
-asyncio.run(load_cogs())
+# asyncio.run
+(load_cogs())
 bot.run(TOKEN)
