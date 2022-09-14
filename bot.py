@@ -46,5 +46,6 @@ async def load_cogs() -> None:
                 print(f"Failed to load extension {extension}\n{exception}")
 
 
-asyncio.run(load_cogs())
+# asyncio.run(
+load_cogs()
 bot.run(TOKEN)
