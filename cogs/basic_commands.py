@@ -16,6 +16,8 @@ async def say(ctx, *, message=None):
         )
     await ctx.send(embed=embed)
 
+#TODO Send private message to Dan Shan and have him say it in a channel. Message and channel can be parameters.
+
 @commands.command(
     name="userinfo",
     description="Get info on a user"

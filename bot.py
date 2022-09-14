@@ -1,3 +1,4 @@
+from cmath import log
 import json
 import sys
 from discord.ext import tasks, commands
@@ -35,8 +36,7 @@ async def cogs_reload() -> None:
             try:
                 await bot.reload_extension(f'cogs.{extension}')
             except Exception as e:
-                exception = f"{type(e).__name__}: {e}"
-                print(f"Failed to load extension {extension}\n{exception}")
+                return
 
 #TODO Handle exceptions cleanly. Maybe logging or printing to console.
 @bot.event
