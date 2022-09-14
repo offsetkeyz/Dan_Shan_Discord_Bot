@@ -11,8 +11,8 @@ async def say(ctx, *, message=None):
         return
     embed = discord.Embed(
             title="Hey, you think you can tell me what to say??",
-            description=f"Ok will this make you happy? Dan Shan has been known to say {message}",
-            color=0xE02B2B
+            description=f"Ok will this make you happy? Dan Shan has been known to say '{message}'",
+            color=0x000000
         )
     await ctx.send(embed=embed)
 
