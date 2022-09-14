@@ -12,16 +12,16 @@ async def saymore(ctx, *, message=None):
     await ctx.send(f'{message}')
 
 @commands.command(
-        name="help",
-        description="List all commands the bot has loaded."
+        # name="help",
+        # description="List all commands the bot has loaded."
     )
-async def help(self, context: Context) -> None:
+async def helpp(self, context: Context) -> None:
     print('pp')
 
 # async 
 def setup(bot):
     # await 
-    commands = ['help','saymore']
+    commands = ['helpp','saymore']
     for command in commands:
         bot.add_command(command)
 
