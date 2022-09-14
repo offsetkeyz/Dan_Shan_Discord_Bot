@@ -13,8 +13,8 @@ if not os.path.isfile("config.json"):
 else:
     with open("config.json") as file:
         config = json.load(file)
-
-bot = commands.Bot(commands.when_mentioned_or(config["prefix"]))
+intents = discord.Intents.default()
+bot = commands.Bot(commands.when_mentioned_or(config["prefix"]), intents=intents)
 
 TOKEN = config['token']
 
@@ -54,21 +54,15 @@ async def load_cogs() -> None:
     """
     The code in this function is executed whenever the bot will start.
     """
-    try:
-        await bot.load_extension('Test')
-        # print(f"Loaded extension '{extension}'")
-    except Exception as e:
-        exception = f"{type(e).__name__}: {e}"
-        # print(f"Failed to load extension {extension}\n{exception}")
-    # for file in os.listdir(f"./cogs"):
-    #     if file.endswith(".py"):
-    #         extension = file[:-3]
-    #         try:
-    #             await bot.load_extension(f'cogs.{extension}')
-    #             print(f"Loaded extension '{extension}'")
-    #         except Exception as e:
-    #             exception = f"{type(e).__name__}: {e}"
-    #             print(f"Failed to load extension {extension}\n{exception}")
+    for file in os.listdir(f"./cogs"):
+        if file.endswith(".py"):
+            extension = file[:-3]
+            try:
+                await bot.load_extension(f'cogs.{extension}')
+                print(f"Loaded extension '{extension}'")
+            except Exception as e:
+                exception = f"{type(e).__name__}: {e}"
+                print(f"Failed to load extension {extension}\n{exception}")
 
 
 asyncio.run(load_cogs())
