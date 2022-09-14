@@ -61,6 +61,5 @@ async def userinfo(ctx, user: discord.User):
     await ctx.send(user.display_name + " has earned their place in this clan. You know how...")
 
 
-# asyncio.run
-(load_cogs())
+asyncio.run(load_cogs())
 bot.run(TOKEN)
