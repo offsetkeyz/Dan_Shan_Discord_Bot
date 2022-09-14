@@ -14,7 +14,7 @@ else:
     with open("config.json") as file:
         config = json.load(file)
 intents = discord.Intents.default()
-bot = commands.Bot(commands.when_mentioned_or(config["prefix"]), intents=intents)
+bot = commands.Bot(commands.when_mentioned_or('!'), intents=intents)
 
 TOKEN = config['token']
 
@@ -46,6 +46,20 @@ def load_cogs() -> None:
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
                 print(f"Failed to load extension {extension}\n{exception}")
+
+
+@bot.command()
+# '*' is to include everything after command
+# Consume all argument must be last in the function
+async def say(ctx, *, message=None):
+    if message is None:
+        await ctx.send('Please provide a message')
+        return
+    await ctx.send(f'{message}')
+
+@bot.command()
+async def userinfo(ctx, user: discord.User):
+    await ctx.send(user.display_name + " has earned their place in this clan. You know how...")
 
 
 # asyncio.run(
