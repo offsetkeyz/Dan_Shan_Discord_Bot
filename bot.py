@@ -26,6 +26,17 @@ async def status_task() -> None:
     statuses = ["with screagles!", "with terpic lertning", "with not sleggert"]
     await bot.change_presence(activity=discord.Game(random.choice(statuses)))
 
+@tasks.loop(minutes=1)
+async def cogs_reload() -> None:
+    for file in os.listdir(f"./cogs"):
+        if file.endswith(".py"):
+            extension = file[:-3]
+            try:
+                await bot.reload_extension(f'cogs.{extension}')
+            except Exception as e:
+                exception = f"{type(e).__name__}: {e}"
+                print(f"Failed to load extension {extension}\n{exception}")
+
 @bot.event
 async def on_ready():
     print('Hello!')
