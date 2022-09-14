@@ -38,6 +38,20 @@ async def cogs_reload() -> None:
                 exception = f"{type(e).__name__}: {e}"
                 print(f"Failed to load extension {extension}\n{exception}")
 
+#TODO Handle exceptions cleanly. Maybe logging or printing to console.
+@bot.event
+async def on_message(message: discord.Message) -> None:
+    """
+    The code in this event is executed every time someone sends a message, with or without the prefix
+
+    :param message: The message that was sent.
+    """
+    try:
+        print(message)
+        await bot.process_commands(message)
+    except Exception as e:
+        print('error test line 76 bot.py')
+
 @bot.event
 async def on_ready():
     print('Hello!')
@@ -62,15 +76,4 @@ asyncio.run(load_cogs())
 bot.run(TOKEN)
 
 
-#TODO Handle exceptions cleanly. Maybe logging or printing to console.
-@bot.event
-async def on_message(message: discord.Message) -> None:
-    """
-    The code in this event is executed every time someone sends a message, with or without the prefix
 
-    :param message: The message that was sent.
-    """
-    try:
-        await bot.process_commands(message)
-    except Exception as e:
-        print('error test line 76 bot.py')
