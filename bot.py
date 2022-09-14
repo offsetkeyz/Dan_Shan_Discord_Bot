@@ -64,17 +64,13 @@ bot.run(TOKEN)
 
 #TODO Handle exceptions cleanly. Maybe logging or printing to console.
 @bot.event
-async def on_command_error(context: Context, error) -> None:
+async def on_message(message: discord.Message) -> None:
     """
-    The code in this event is executed every time a normal valid command catches an error
-    :param context: The context of the normal command that failed executing.
-    :param error: The error that has been faced.
+    The code in this event is executed every time someone sends a message, with or without the prefix
+
+    :param message: The message that was sent.
     """
-    # if isinstance(error, commands.MissingRequiredArgument):
-    embed = discord.Embed(
-        title="Error!",
-        # We need to capitalize because the command arguments have no capital letter in the code.
-        description=str(error).capitalize(),
-        color=0xE02B2B
-        )
-    await context.send(embed=embed)
+    try:
+        await bot.process_commands(message)
+    except Exception as e:
+        print('error test line 76 bot.py')
