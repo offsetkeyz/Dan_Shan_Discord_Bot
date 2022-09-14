@@ -15,7 +15,7 @@ async def saymore(ctx, *, message=None):
         name="help",
         description="List all commands the bot has loaded."
     )
-async def help(self, context: Context) -> None:
+async def helpp(self, context: Context) -> None:
     prefix = self.bot.config["prefix"]
     embed = discord.Embed(title="Help", description="List of available commands:", color=0x9C84EF)
     for i in self.bot.cogs:
@@ -32,7 +32,7 @@ async def help(self, context: Context) -> None:
 # async 
 def setup(bot):
     # await 
-    commands = [help,saymore]
+    commands = [helpp,saymore]
     for command in commands:
         bot.add_command(command)
 
