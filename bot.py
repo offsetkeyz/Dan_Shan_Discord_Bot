@@ -1,6 +1,7 @@
 import json
 import sys
 from discord.ext import tasks, commands
+from discord.ext.commands import Context
 import random
 import discord
 import discord.ext
@@ -59,3 +60,21 @@ async def load_cogs() -> None:
 
 asyncio.run(load_cogs())
 bot.run(TOKEN)
+
+
+#TODO Handle exceptions cleanly. Maybe logging or printing to console.
+@bot.event
+async def on_command_error(context: Context, error) -> None:
+    """
+    The code in this event is executed every time a normal valid command catches an error
+    :param context: The context of the normal command that failed executing.
+    :param error: The error that has been faced.
+    """
+    # if isinstance(error, commands.MissingRequiredArgument):
+    embed = discord.Embed(
+        title="Error!",
+        # We need to capitalize because the command arguments have no capital letter in the code.
+        description=str(error).capitalize(),
+        color=0xE02B2B
+        )
+    await context.send(embed=embed)
