@@ -83,6 +83,21 @@ async def on_ready():
     status_task.start()
     cogs_reload.start()
 
+# async def load_cogs() -> None:
+#     """
+#     The code in this function is executed whenever the bot will start.
+#     """
+#     for file in os.listdir(f"./cogs"):
+#         if file.endswith(".py"):
+#             extension = file[:-3]
+#             try:
+#                 # await 
+#                 bot.load_extension(f'cogs.{extension}')
+#                 print(f"Loaded extension '{extension}'")
+#             except Exception as e:
+#                 exception = f"{type(e).__name__}: {e}"
+#                 print(f"Failed to load extension {extension}\n{exception}")
+
 async def load_cogs() -> None:
     """
     The code in this function is executed whenever the bot will start.
@@ -91,8 +106,7 @@ async def load_cogs() -> None:
         if file.endswith(".py"):
             extension = file[:-3]
             try:
-                # await 
-                bot.load_extension(f'cogs.{extension}')
+                await bot.load_extension(f"cogs.{extension}")
                 print(f"Loaded extension '{extension}'")
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
